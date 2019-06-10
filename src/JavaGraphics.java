@@ -12,14 +12,17 @@ public class JavaGraphics extends JApplet {
     public static int numblock_h;
     public static int maplength_x = 100;
     public static int maplength_y = 50;
-    public static int playeroffset_x = 64;
-    public static int playeroffset_y = 128;
     public static char[][] map;
     public static Player p0;
     public static Player p1;
 
     public JavaGraphics() {
         map = MapLoader.loadMap("src/resources/map.dat");
+        try {
+            Images.loadImages();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         JFrame window = new JFrame();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -32,8 +35,8 @@ public class JavaGraphics extends JApplet {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
-        p0 = new Player(screen_w/4,screen_h/3 * 2 , new Color(125,80,50),'W', 'S', 'A', 'D');
-        p1 = new Player(screen_w/4,screen_h/3 * 2, new Color(75,180,255), KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
+        p0 = new Player(screen_w/4,screen_h/3 * 2 , new Color(125,80,50),'W', 'S', 'A', 'D', 'Q', Images.p1);
+        p1 = new Player(32*100 - screen_w/4,screen_h/3 * 2, new Color(75,180,255), KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, '0', Images.p2);
 
         MainGraphics graphicsLeft = new MainGraphics(0);
         graphicsLeft.setPreferredSize(new Dimension(screen_w / 2, screen_h));

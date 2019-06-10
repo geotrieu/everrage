@@ -15,10 +15,10 @@ public class MapLoader {
             int c;
             while ((c = in.read()) != -1) {
                 if (c == 13) {
-                    y++;
-                    x = 0;
                     continue;
                 } else if (c == 10) {
+                    y++;
+                    x = 0;
                     continue;
                 }
                 map[y][x] = (char)c;
