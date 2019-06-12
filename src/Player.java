@@ -13,6 +13,7 @@ public class Player {
     private BufferedImage pImg[];
     private int shootCool = 0;
     private int respawnCool = 0;
+    private Flag carryingFlag;
 
     public Player (int x, int y, Color c, int moveUpC, int moveDownC, int moveLeftC, int moveRightC, int shootC, BufferedImage pImg[]) {
         this.x = x;
@@ -54,8 +55,13 @@ public class Player {
     }
 
     public void die() {
+        if (carryingFlag != null) {
+            carryingFlag.setHeld(0);
+            carryingFlag.setHeldBy(null);
+            System.out.println("test");
+        }
+        carryingFlag = null;
         respawnCool++;
-        teleport(0,0);
     }
 
     public void setGround(boolean s) {
@@ -66,7 +72,13 @@ public class Player {
         shootCool = cool;
     }
 
+    public void setCarryingFlag(Flag f) { carryingFlag = f; }
+
     public void drawPlayer(Graphics g, Player ref) {
+        //If player is dead
+        if (respawnCool != 0) {
+            return;
+        }
         if (lastDirection == 1) {
             g.drawImage(pImg[1], JavaGraphics.screen_w/4 - (ref.returnx() - x), JavaGraphics.screen_h/3*2 - (ref.returny() - y), 32, 32, null);
         } else {
@@ -101,11 +113,21 @@ public class Player {
 
     public int returnLastDirection() { return this.lastDirection; }
 
+    public int returnRespawnCool() { return this.respawnCool; }
+
     public int returnShootCool() { return this.shootCool; }
 
     public int[] returnControls() { return this.controls; }
 
     public BufferedImage[] returnImages() { return this.pImg; }
+
+    public boolean isDead() {
+        if (respawnCool == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public boolean onGround() { return this.onGround; }
 }

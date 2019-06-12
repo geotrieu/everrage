@@ -32,6 +32,12 @@ public class Physics {
 
     //Handles Collision for Up, Left and Right
     public static void collisionTick(char[][] map, Player p) {
+        //check up
+        /*if (map[(p.returny())/32][(p.returnx() + 15)/32] != '0') {
+            p.setSpeed(p.returnVx(), 0);
+            p.teleport(p.returnx(), p.returny()/32 * 32 + 32);
+            System.out.println("test");
+        }*/
         //check left
         if (map[(p.returny())/32][(p.returnx())/32] != '0') {
             p.setSpeed(0, p.returnVy());
@@ -39,8 +45,8 @@ public class Physics {
         }
         //check right
         if (map[(p.returny())/32][(p.returnx() + 31)/32] != '0') {
-            p.setSpeed(0, p.returnVy());
-            p.teleport(p.returnx()/32 * 32, p.returny());
+            p.setSpeed(0, 0);
+            p.teleport(p.returnx()/32 * 32, p.returny() / 32 * 32);
         }
     }
 
@@ -71,6 +77,27 @@ public class Physics {
                             p.die();
                             return;
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public static void flagCollisionTick(Player p, Flag f, int held) {
+        //check flag
+        if (held == -1) {
+            if (f.returnx()/32 == f.returnStartx()/32 && f.returny()/32 == f.returnStarty()/32) {
+                return;
+            }
+        }
+        if (f.returnheld() == 0 && !p.isDead()) {
+            if ((p.returnx() + 15) > f.returnx()) {
+                if (p.returnx() + 15 < f.returnx() + 31) {
+                    if (p.returny() + 15 > f.returny() && p.returny() + 15 < (p.returny() + 31)) {
+                        f.setHeld(held);
+                        f.setHeldBy(p);
+                        p.setCarryingFlag(f);
+                        return;
                     }
                 }
             }

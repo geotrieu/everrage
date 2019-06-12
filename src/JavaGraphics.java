@@ -15,9 +15,10 @@ public class JavaGraphics extends JApplet {
     public static char[][] map;
     public static Player p0;
     public static Player p1;
+    public static Flag f1;
+    public static Flag f2;
 
     public JavaGraphics() {
-        map = MapLoader.loadMap("src/resources/map.dat");
         try {
             Images.loadImages();
         } catch (Exception e) {
@@ -30,6 +31,9 @@ public class JavaGraphics extends JApplet {
         screen_h = dim.height;
         numblock_w = screen_w / block_w;
         numblock_h = screen_h / block_h;
+
+        map = MapLoader.loadMap("src/resources/map.dat");
+
         window.setSize(screen_w, screen_h);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
