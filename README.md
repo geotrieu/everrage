@@ -5,9 +5,14 @@ Developed using Java, and Java Swing.
 EverRage is a multi-player capture-the-flag style platformer,
 with split screens for player 1 and player 2.
 
-![Early Game](https://i.imgur.com/s8Slalu.png)  
+![Picture 1](https://i.imgur.com/s8Slalu.png)  
 
-![End Game](https://i.imgur.com/XxEm2VK.png)
+![Picture 2](https://i.imgur.com/XxEm2VK.png)
+
+#Important Note
+This game is NOT optimized for efficiency. May be laggy on low-end
+machines. To increase the game speed, decrease the GAMESPEED constant
+(default 10) in the Main class.
 
 # EverRage Controls
 The controls are extremely basic for this game.

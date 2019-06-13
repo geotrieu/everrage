@@ -138,7 +138,7 @@ public class MainGraphics extends JComponent{
 
         //Game Delay
         try {
-            Thread.sleep(10);
+            Thread.sleep(Main.GAMESPEED);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
