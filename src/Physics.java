@@ -62,21 +62,14 @@ public class Physics {
      * Output: N/A
      *****************************************************/
     public static void collisionTick(char[][] map, Player p) {
-        //check up
-        /*if (map[(p.returnY())/32][(p.returnX() + 15)/32] != '0') {
-            p.setSpeed(p.returnVx(), 0);
-            p.teleport(p.returnX(), p.returnY()/32 * 32 + 32);
-            System.out.println("test");
-        }*/
         //check left
-        if (map[(p.returnY())/32][(p.returnX())/32] != '0') {
+        if (map[(p.returnY()) / 32][(p.returnX()) / 32] != '0') {
             p.setSpeed(0, p.returnVy());
-            p.teleport(p.returnX()/32 * 32 + 32, p.returnY());
+            p.teleport(p.returnX() / 32 * 32 + 32, p.returnY());
         }
         //check right
-        if (map[(p.returnY())/32][(p.returnX() + 31)/32] != '0') {
-            p.setSpeed(0, 0);
-            p.teleport(p.returnX()/32 * 32, p.returnY() / 32 * 32);
+        if (map[(p.returnY()) / 32][(p.returnX() + 31) / 32] != '0') {
+            p.setSpeed(0, 0);p.teleport(p.returnX() / 32 * 32, p.returnY() / 32 * 32);
         }
     }
 
