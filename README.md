@@ -16,13 +16,13 @@ machines. To increase the game speed, decrease the GAMESPEED constant
 
 # EverRage Controls
 The controls are extremely basic for this game.
-###Player 1
+### Player 1
 W - Jump  
 A - Move Left  
 D - Move Right  
 Q - Shoot
 
-###Player 2
+### Player 2
 Up Arrow Key - Jump  
 Left Arrow Key - Move Left  
 Right Arrow Key - Move Right  
