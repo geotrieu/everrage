@@ -1,9 +1,13 @@
+/**************************************************
+ * CLASS: MainGraphics
+ * NAME: George Trieu
+ * Date: 06/12/2019
+ * Description: Defines the activities and motion inside the
+ *              game window.
+ *****************************************************/
 import java.awt.*;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 import java.awt.event.*;
-import java.io.File;
 import java.util.LinkedList;
 
 public class MainGraphics extends JComponent{
@@ -22,6 +26,12 @@ public class MainGraphics extends JComponent{
     static Flag f[] = {JavaGraphics.f1, JavaGraphics.f2};
     static LinkedList<Bullet> bll = new LinkedList<Bullet>();
 
+    /**************************************************
+     * CONSTRUCTOR: MainGraphics
+     * NAME: George Trieu
+     * Date: 06/12/2019
+     * Inputs: int i - current player number
+     *****************************************************/
     public MainGraphics(int i){
         c_player = i;
 
@@ -30,10 +40,21 @@ public class MainGraphics extends JComponent{
         setFocusable(true);
     }
 
+    /**************************************************
+     * FUNCTION: paint
+     * NAME: George Trieu
+     * Date: 06/12/2019
+     * Description: Paints the offscreen graphics to onscreen
+     * Inputs: Graphics g
+     * Output: N/A
+     *****************************************************/
     public void paint(Graphics g) {
         //Draw Map
         //Side Scroller
         MapLoader.drawMap(g, map, p, c_player);
+
+        //Draw Scoreboard
+        Scoreboard.drawScore(g, c_player);
 
         if (c_player == 0) {
             p[1].drawPlayer(g, p[0]);
@@ -81,10 +102,10 @@ public class MainGraphics extends JComponent{
                             if (p[i].returnShootCool() == 0) {
                                 if (p[i].returnLastDirection() == 1) {
                                     //Fire out of the right side
-                                    bll.add(new Bullet(p[i].returnx() + 31, p[i].returny() + 13, 5));
+                                    bll.add(new Bullet(p[i].returnX() + 31, p[i].returnY() + 13, 5));
                                 } else {
                                     //Fire out of the left side
-                                    bll.add(new Bullet(p[i].returnx() - 9, p[i].returny() + 13, -5));
+                                    bll.add(new Bullet(p[i].returnX() - 9, p[i].returnY() + 13, -5));
                                 }
                                 p[i].setShootCool(60);
                             }

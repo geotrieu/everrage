@@ -1,7 +1,14 @@
+/**************************************************
+ * CLASS: JavaGraphics
+ * NAME: George Trieu
+ * Date: 06/12/2019
+ * Description: Defines and Instantiates each window inside
+ *              the application. Stores important game variables.
+ *****************************************************/
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class JavaGraphics extends JApplet {
     public static int screen_w;
@@ -18,6 +25,12 @@ public class JavaGraphics extends JApplet {
     public static Flag f1;
     public static Flag f2;
 
+    /**************************************************
+     * CONSTRUCTOR: JavaGraphics
+     * NAME: George Trieu
+     * Date: 06/12/2019
+     * Inputs: N/A
+     *****************************************************/
     public JavaGraphics() {
         try {
             Images.loadImages();
@@ -39,8 +52,8 @@ public class JavaGraphics extends JApplet {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
-        p0 = new Player(screen_w/4,screen_h/3 * 2 , new Color(125,80,50),'W', 'S', 'A', 'D', 'Q', Images.p1);
-        p1 = new Player(32*100 - screen_w/4,screen_h/3 * 2, new Color(75,180,255), KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, '0', Images.p2);
+        p0 = new Player(screen_w/4,screen_h/3 * 2 , new Color(125,80,50),'W', 'S', 'A', 'D', 'Q', Images.p1, 0);
+        p1 = new Player(32*100 - screen_w/4,screen_h/3 * 2, new Color(75,180,255), KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, 'P', Images.p2, 1);
 
         MainGraphics graphicsLeft = new MainGraphics(0);
         graphicsLeft.setPreferredSize(new Dimension(screen_w / 2, screen_h));

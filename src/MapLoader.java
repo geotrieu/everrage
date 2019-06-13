@@ -1,3 +1,10 @@
+/**************************************************
+ * CLASS: MapLoader
+ * NAME: George Trieu
+ * Date: 06/12/2019
+ * Description: Functions and methods contributing to the loading,
+ *              processing, and drawing of the game map.
+ *****************************************************/
 import java.awt.*;
 import java.io.FileInputStream;
 
@@ -10,6 +17,14 @@ public class MapLoader {
     static int mlx = JavaGraphics.maplength_x;
     static int mly = JavaGraphics.maplength_y;
 
+    /**************************************************
+     * FUNCTION: loadMap
+     * NAME: George Trieu
+     * Date: 06/12/2019
+     * Description: Loads the map file into memory
+     * Inputs: String loc
+     * Output: A 2D array containing the map
+     *****************************************************/
     public static char[][] loadMap(String loc) {
         char map[][] = new char[JavaGraphics.maplength_y][JavaGraphics.maplength_x];
         int flagLoc[][] = new int[2][2];
@@ -59,22 +74,30 @@ public class MapLoader {
         return map;
     }
 
+    /**************************************************
+     * FUNCTION: drawMap
+     * NAME: George Trieu
+     * Date: 06/12/2019
+     * Description: Draws the map to the screen
+     * Inputs: Graphics g, char[][] map, Player[] p, int c_player
+     * Output: N/A
+     *****************************************************/
     public static void drawMap(Graphics g, char[][] map, Player[] p, int c_player) {
         int screeny = 0;
         for (int y = 0; y < mly; y++) {
             for (int x = 0; x < mlx; x++) {
                 if (map[y][x] == '1') {
-                    g.drawImage(Images.grass, x*32 + sw/4 - p[c_player].returnx(), screeny*32 + sh/3*2 - p[c_player].returny(), 32, 32, null);
+                    g.drawImage(Images.grass, x*32 + sw/4 - p[c_player].returnX(), screeny*32 + sh/3*2 - p[c_player].returnY(), 32, 32, null);
                     //g.setColor(new Color(0,255,50));
-                    //g.fillRect(x*32 + sw/4 - p[c_player].returnx(), screeny*32 + sh/3*2 - p[c_player].returny(), 32,32);
+                    //g.fillRect(x*32 + sw/4 - p[c_player].returnX(), screeny*32 + sh/3*2 - p[c_player].returnY(), 32,32);
                 } else if (map[y][x] == '6') {
                     g.setColor(new Color(0,123,50));
-                    g.fillRect(x*32 + sw/4 - p[c_player].returnx(), screeny*32 + sh/3*2 - p[c_player].returny(), 32,32);
+                    g.fillRect(x*32 + sw/4 - p[c_player].returnX(), screeny*32 + sh/3*2 - p[c_player].returnY(), 32,32);
                 } else if (map[y][x] == 'B') {
                     g.setColor(new Color(0,0,0));
-                    g.fillRect(x*32 + sw/4 - p[c_player].returnx(), screeny*32 + sh/3*2 - p[c_player].returny(), 32,32);
+                    g.fillRect(x*32 + sw/4 - p[c_player].returnX(), screeny*32 + sh/3*2 - p[c_player].returnY(), 32,32);
                 } else {
-                    g.drawImage(Images.sky, x*32 + sw/4 - p[c_player].returnx(), screeny*32 + sh/3*2 - p[c_player].returny(), 32, 32, null);
+                    g.drawImage(Images.sky, x*32 + sw/4 - p[c_player].returnX(), screeny*32 + sh/3*2 - p[c_player].returnY(), 32, 32, null);
                 }
             }
             screeny++;
